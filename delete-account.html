@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="How to request deletion of your Antarctica account and associated data.">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Securely request deletion of your Antarctica account.">
   <title>Antarctica — Account Deletion</title>
   <style>
     :root {
@@ -16,6 +15,7 @@
       --muted: #aab8cc;
       --accent: #86c7ff;
       --border: #293951;
+      --danger: #ffb4ab;
     }
 
     * { box-sizing: border-box; }
@@ -24,194 +24,403 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.7;
+      font: 16px/1.65 Arial, Helvetica, sans-serif;
     }
 
     header {
-      padding: 38px 20px 28px;
       text-align: center;
+      padding: 30px 16px;
       background: var(--panel);
       border-bottom: 1px solid var(--border);
     }
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 5vw, 3rem);
-    }
-
+    header h1 { margin: 0; }
     header p { color: var(--muted); }
 
     main {
-      width: min(820px, 100%);
+      width: min(680px, 100%);
       margin: auto;
-      padding: 28px 20px 44px;
+      padding: 24px 16px 40px;
     }
 
-    section {
-      margin-bottom: 22px;
-      padding: 22px;
+    .panel {
+      margin-bottom: 18px;
+      padding: 20px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
     }
 
-    h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: var(--accent);
-    }
+    h2 { margin-top: 0; font-size: 1.2rem; }
+    label { display: block; margin: 12px 0 6px; }
 
-    a { color: var(--accent); }
-
-    .updated {
-      display: inline-block;
-      padding: 7px 12px;
-      border: 1px solid var(--border);
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
       border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
       color: var(--text);
+      font: inherit;
     }
 
-    .request {
+    button, .button {
       display: inline-block;
-      margin: 8px 0;
-      padding: 12px 18px;
+      width: 100%;
+      margin: 7px 0;
+      padding: 12px 14px;
+      border: 0;
       border-radius: 8px;
       background: var(--accent);
       color: #081321;
-      text-decoration: none;
+      font: inherit;
       font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
     }
 
-    .note { color: var(--muted); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    button.danger { background: var(--danger); }
+
+    .muted { color: var(--muted); }
+    .hidden { display: none !important; }
+
+    #status {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .updated {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
 
     footer {
-      padding: 24px 16px;
       text-align: center;
-      color: var(--muted);
+      padding: 22px 12px;
       border-top: 1px solid var(--border);
+      color: var(--muted);
     }
 
-    footer a { margin: 0 8px; }
-
-    @media (max-width: 600px) {
-      main { padding: 20px 14px 34px; }
-      section { padding: 17px; }
-    }
+    footer a { color: var(--accent); margin: 0 8px; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Antarctica</h1>
-    <p>Account and Data Deletion</p>
-    <p class="updated"><strong>Last updated: 18 October 2026</strong></p>
-  </header>
+<header>
+  <h1>Antarctica</h1>
+  <p>Account and Data Deletion</p>
+  <p class="updated"><strong>Last updated: 18 October 2026</strong></p>
+</header>
 
-  <main>
-    <section>
-      <h2>Request deletion of your Antarctica account</h2>
-      <p>
-        You can request deletion of your Antarctica account and its
-        associated data even if you no longer have the app installed.
-        This page provides an external way to submit your request.
-      </p>
-      <p>
-        <strong>App:</strong> Antarctica<br>
-        <strong>Developer:</strong> Individual developer<br>
-        <strong>Contact:</strong>
-        <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>
-      </p>
-    </section>
+<main>
+  <section class="panel">
+    <h2>Request account deletion</h2>
+    <p>
+      Sign in with the account you want to delete. After authentication,
+      you can review and explicitly confirm your deletion request.
+    </p>
+    <p class="muted">
+      Account deletion is intended to remove your account and associated
+      data according to our deletion process and applicable legal
+      retention requirements.
+    </p>
+  </section>
 
-    <section>
-      <h2>Option 1: Request deletion by email</h2>
-      <p>
-        Send an account-deletion request from the email address associated
-        with your Antarctica account, if you can access it. Include the
-        following information in your request:
-      </p>
-      <ul>
-        <li>That you want your Antarctica account deleted.</li>
-        <li>The email address associated with the account, so we can identify it.</li>
-        <li>Whether you can still access the account, if relevant.</li>
-      </ul>
-      <p>
-        Do not include your password, authentication codes or other
-        sign-in secrets. We may contact you if reasonable additional
-        information is needed to verify the request.
-      </p>
-      <a class="request"
-         href="mailto:antarctica.support@gmail.com?subject=Antarctica%20Account%20Deletion%20Request&body=I%20request%20deletion%20of%20my%20Antarctica%20account%20and%20associated%20data.%0A%0AAccount%20email%3A%20%5Benter%20your%20account%20email%5D%0A%0AI%20can%20access%20my%20account%3A%20%5Byes%2Fno%5D%0A%0APlease%20confirm%20receipt%20of%20my%20request.">
-        Start deletion request by email
-      </a>
-      <p class="note">
-        This button opens your email application with a draft request.
-        You must send the email for your request to reach us. If it does
-        not open, email antarctica.support@gmail.com directly.
-      </p>
-    </section>
+  <section class="panel" id="signin-panel">
+    <h2>1. Verify your account</h2>
 
-    <section>
-      <h2>Option 2: Request deletion inside the app</h2>
-      <p>
-        If you can still sign in, use the account-deletion option in
-        Antarctica's Settings screen and follow the confirmation steps.
-        You do not need to submit a second request if your in-app request
-        has already been accepted.
-      </p>
-    </section>
+    <button id="google-button" type="button">
+      Continue with Google
+    </button>
 
-    <section>
-      <h2>What data is affected?</h2>
-      <p>
-        A completed account-deletion request is intended to remove the
-        account and associated personal data covered by the deletion
-        process. This may include your profile and account information,
-        task-related server data, social connections, and associated
-        messages or media where applicable to the system's deletion rules.
-      </p>
-      <p>
-        Some data may need to be retained where required or permitted by
-        law, or for legitimate security, fraud-prevention or compliance
-        purposes. Temporary processing records may also be used to
-        complete a deletion request.
-      </p>
-      <p>
-        For further information, read the
-        <a href="privacy-policy.html">Antarctica Privacy Policy</a>.
-      </p>
-    </section>
+    <hr style="border-color: var(--border); margin: 20px 0;">
 
-    <section>
-      <h2>How long does deletion take?</h2>
-      <p>
-        Deletion requests may be processed asynchronously, so the process
-        may not finish immediately. We will aim to handle valid requests
-        within a reasonable period and in accordance with applicable law.
-      </p>
-      <p>
-        For a status enquiry, contact
-        <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>
-        and refer to your account-deletion request.
-      </p>
-    </section>
+    <form id="magic-form">
+      <label for="email">Account email address</label>
+      <input id="email" type="email" autocomplete="email"
+             required maxlength="254"
+             placeholder="you@example.com">
+      <button type="submit">Send sign-in magic link</button>
+    </form>
 
-    <section>
-      <h2>Contact and related policies</h2>
-      <p>
-        Questions about account deletion can be sent to
-        <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>.
-      </p>
-      <p>
-        Read our <a href="privacy-policy.html">Privacy Policy</a> and
-        <a href="terms.html">Terms of Service</a> for more information.
-      </p>
-    </section>
-  </main>
+    <p class="muted">
+      The magic link will return you to this page. Use the email address
+      associated with your existing Antarctica account. This page does
+      not ask for your password.
+    </p>
+  </section>
 
-  <footer>
-    <p>© 2026 Antarctica. All rights reserved.</p>
-    <p><a href="index.html">Home</a></p>
-  </footer>
+  <section class="panel hidden" id="account-panel">
+    <h2>2. Confirm your account</h2>
+    <p>Signed-in account:</p>
+    <p><strong id="account-email"></strong></p>
+    <p class="muted">
+      Make sure this is the account you want to delete. This action
+      is intended to be permanent and may remove your profile,
+      friendships, messages, photos and other associated data.
+    </p>
+
+    <label>
+      <input id="confirm-checkbox" type="checkbox">
+      I understand that I am requesting permanent account deletion.
+    </label>
+
+    <button id="delete-button" class="danger" type="button" disabled>
+      Confirm account deletion
+    </button>
+
+    <button id="signout-button" class="secondary" type="button">
+      Sign out / use another account
+    </button>
+  </section>
+
+  <section class="panel">
+    <h2>What happens next?</h2>
+    <p>
+      Your request is submitted to Antarctica's account-deletion
+      backend. The backend may process cleanup asynchronously and retry
+      failed operations. An accepted request does not mean every item
+      has already been deleted.
+    </p>
+    <p>
+      Some information may be retained where required or permitted by law.
+      See the <a href="privacy-policy.html">Privacy Policy</a> for details.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Need help?</h2>
+    <p>
+      Email
+      <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>
+      if you cannot sign in or need help with a deletion request.
+    </p>
+  </section>
+
+  <p id="status" role="status" aria-live="polite" class="muted"></p>
+</main>
+
+<footer>
+  <a href="index.html">Home</a>
+  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="terms.html">Terms of Service</a>
+</footer>
+
+<script type="module">
+  import { createClient } from
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+  const SUPABASE_URL = "https://xabbsntfabkunkisthcn.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_YpIaiwWRTREJ1l0uBBM3vw_KnzWI8am";
+
+  const REDIRECT_URL =
+    "https://antarctica100.github.io/antarctica-app.github.io/delete-account.html";
+
+  const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
+
+  const $ = (id) => document.getElementById(id);
+  const status = $("status");
+  const signInPanel = $("signin-panel");
+  const accountPanel = $("account-panel");
+  const googleButton = $("google-button");
+  const magicForm = $("magic-form");
+  const deleteButton = $("delete-button");
+  const checkbox = $("confirm-checkbox");
+
+  function showStatus(message) {
+    status.textContent = message;
+  }
+
+  function setBusy(button, busy, label) {
+    button.disabled = busy;
+    if (busy) {
+      button.dataset.originalText ??= button.textContent;
+      button.textContent = label;
+    } else if (button.dataset.originalText) {
+      button.textContent = button.dataset.originalText;
+      delete button.dataset.originalText;
+    }
+  }
+
+  async function refreshAccountView() {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+      showStatus("Could not check your sign-in session. Please reload and try again.");
+      return;
+    }
+
+    const session = data.session;
+
+    if (!session) {
+      signInPanel.classList.remove("hidden");
+      accountPanel.classList.add("hidden");
+      return;
+    }
+
+    signInPanel.classList.add("hidden");
+    accountPanel.classList.remove("hidden");
+    $("account-email").textContent =
+      session.user.email || "Signed-in account";
+    deleteButton.disabled = !checkbox.checked;
+
+    showStatus("Your account is verified. Review the email above before continuing.");
+  }
+
+  googleButton.addEventListener("click", async () => {
+    setBusy(googleButton, true, "Opening Google sign-in…");
+    showStatus("");
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo: REDIRECT_URL }
+      });
+
+      if (error) throw error;
+    } catch (error) {
+      showStatus("Google sign-in could not start: " + error.message);
+      setBusy(googleButton, false);
+    }
+  });
+
+  magicForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = $("email").value.trim();
+    const submitButton = magicForm.querySelector('button[type="submit"]');
+
+    setBusy(submitButton, true, "Sending magic link…");
+    showStatus("");
+
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: REDIRECT_URL,
+          shouldCreateUser: false
+        }
+      });
+
+      if (error) throw error;
+
+      showStatus(
+        "If this email belongs to an existing account and sign-in is permitted, " +
+        "a magic link will be sent. Open it on this device or browser to continue."
+      );
+    } catch (error) {
+      showStatus("Could not send the sign-in link: " + error.message);
+    } finally {
+      setBusy(submitButton, false);
+    }
+  });
+
+  checkbox.addEventListener("change", () => {
+    deleteButton.disabled = !checkbox.checked;
+  });
+
+  deleteButton.addEventListener("click", async () => {
+    if (!checkbox.checked) return;
+
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    const session = sessionData?.session;
+
+    if (sessionError || !session) {
+      showStatus("Your sign-in session has expired. Sign in again before requesting deletion.");
+      await refreshAccountView();
+      return;
+    }
+
+    const accountEmail = session.user.email || "";
+
+    const confirmed = window.confirm(
+      "Permanently request deletion of the Antarctica account " +
+      accountEmail + "?\n\nThis action cannot normally be undone."
+    );
+
+    if (!confirmed) return;
+
+    setBusy(deleteButton, true, "Submitting request…");
+    showStatus("");
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "delete-account",
+        {
+          headers: {
+            Authorization: "Bearer " + session.access_token
+          }
+        }
+      );
+
+      if (error) throw error;
+
+      if (!data || data.success !== true || data.queued !== true) {
+        throw new Error(
+          "The server did not confirm that the deletion request was queued."
+        );
+      }
+
+      showStatus(
+        "Your deletion request was accepted for processing. " +
+        "Cleanup may take time and may be retried if an operation fails. " +
+        "This confirmation does not mean all data has already been deleted."
+      );
+
+      checkbox.checked = false;
+      accountPanel.classList.add("hidden");
+
+      await supabase.auth.signOut({ scope: "local" });
+    } catch (error) {
+      showStatus(
+        "We could not confirm that your deletion request was accepted. " +
+        "Your account has not been confirmed deleted. Please try again " +
+        "or contact antarctica.support@gmail.com.\n\nDetails: " +
+        (error.message || "Unknown error")
+      );
+      setBusy(deleteButton, false);
+      deleteButton.disabled = !checkbox.checked;
+    }
+  });
+
+  $("signout-button").addEventListener("click", async () => {
+    await supabase.auth.signOut();
+    checkbox.checked = false;
+    showStatus("You have signed out.");
+    await refreshAccountView();
+  });
+
+  supabase.auth.onAuthStateChange((event) => {
+    if (event === "SIGNED_IN" || event === "SIGNED_OUT" ||
+        event === "TOKEN_REFRESHED") {
+      refreshAccountView();
+    }
+  });
+
+  await refreshAccountView();
+</script>
 </body>
 </html>
