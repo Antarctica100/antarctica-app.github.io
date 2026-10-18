@@ -160,6 +160,23 @@
     </p>
   </section>
 
+  <section class="panel hidden" id="success-panel" aria-live="polite">
+    <h2>Deletion request received</h2>
+    <p><strong>Your account-deletion request was accepted for processing.</strong></p>
+    <p>
+      The cleanup process may take time and may retry failed operations.
+      This confirmation means the request was queued; it does not mean all
+      account data has already been deleted.
+    </p>
+    <p class="muted">
+      Account requested for deletion:
+      <strong id="deleted-account-email"></strong>
+    </p>
+    <button id="return-button" class="secondary" type="button">
+      Return to start / use another account
+    </button>
+  </section>
+
   <section class="panel hidden" id="account-panel">
     <h2>2. Confirm your account</h2>
     <p>Signed-in account:</p>
@@ -243,10 +260,13 @@
   const status = $("status");
   const signInPanel = $("signin-panel");
   const accountPanel = $("account-panel");
+  const successPanel = $("success-panel");
   const googleButton = $("google-button");
   const magicForm = $("magic-form");
   const deleteButton = $("delete-button");
   const checkbox = $("confirm-checkbox");
+
+  let deletionRequestAccepted = false;
 
   function showStatus(message) {
     status.textContent = message;
@@ -254,6 +274,7 @@
 
   function setBusy(button, busy, label) {
     button.disabled = busy;
+
     if (busy) {
       button.dataset.originalText ??= button.textContent;
       button.textContent = label;
@@ -264,10 +285,20 @@
   }
 
   async function refreshAccountView() {
+    // Never replace the success confirmation automatically.
+    if (deletionRequestAccepted) {
+      signInPanel.classList.add("hidden");
+      accountPanel.classList.add("hidden");
+      successPanel.classList.remove("hidden");
+      return;
+    }
+
     const { data, error } = await supabase.auth.getSession();
 
     if (error) {
-      showStatus("Could not check your sign-in session. Please reload and try again.");
+      showStatus(
+        "Could not check your sign-in session. Please reload and try again."
+      );
       return;
     }
 
@@ -276,16 +307,22 @@
     if (!session) {
       signInPanel.classList.remove("hidden");
       accountPanel.classList.add("hidden");
+      successPanel.classList.add("hidden");
       return;
     }
 
     signInPanel.classList.add("hidden");
     accountPanel.classList.remove("hidden");
+    successPanel.classList.add("hidden");
+
     $("account-email").textContent =
       session.user.email || "Signed-in account";
+
     deleteButton.disabled = !checkbox.checked;
 
-    showStatus("Your account is verified. Review the email above before continuing.");
+    showStatus(
+      "Your account is verified. Review the email above before continuing."
+    );
   }
 
   googleButton.addEventListener("click", async () => {
@@ -300,7 +337,10 @@
 
       if (error) throw error;
     } catch (error) {
-      showStatus("Google sign-in could not start: " + error.message);
+      showStatus(
+        "Google sign-in could not start: " +
+        (error.message || "Unknown error")
+      );
       setBusy(googleButton, false);
     }
   });
@@ -309,7 +349,8 @@
     event.preventDefault();
 
     const email = $("email").value.trim();
-    const submitButton = magicForm.querySelector('button[type="submit"]');
+    const submitButton =
+      magicForm.querySelector('button[type="submit"]');
 
     setBusy(submitButton, true, "Sending magic link…");
     showStatus("");
@@ -330,7 +371,10 @@
         "a magic link will be sent. Open it on this device or browser to continue."
       );
     } catch (error) {
-      showStatus("Could not send the sign-in link: " + error.message);
+      showStatus(
+        "Could not send the sign-in link: " +
+        (error.message || "Unknown error")
+      );
     } finally {
       setBusy(submitButton, false);
     }
@@ -343,13 +387,17 @@
   deleteButton.addEventListener("click", async () => {
     if (!checkbox.checked) return;
 
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    const {
+      data: sessionData,
+      error: sessionError
+    } = await supabase.auth.getSession();
 
     const session = sessionData?.session;
 
     if (sessionError || !session) {
-      showStatus("Your sign-in session has expired. Sign in again before requesting deletion.");
+      showStatus(
+        "Your sign-in session has expired. Sign in again before requesting deletion."
+      );
       await refreshAccountView();
       return;
     }
@@ -384,16 +432,28 @@
         );
       }
 
-      showStatus(
-        "Your deletion request was accepted for processing. " +
-        "Cleanup may take time and may be retried if an operation fails. " +
-        "This confirmation does not mean all data has already been deleted."
-      );
+      // The backend accepted the request. Show a persistent confirmation.
+      deletionRequestAccepted = true;
+
+      $("deleted-account-email").textContent =
+        accountEmail || "Signed-in account";
 
       checkbox.checked = false;
       accountPanel.classList.add("hidden");
+      signInPanel.classList.add("hidden");
+      successPanel.classList.remove("hidden");
+      showStatus("");
 
-      await supabase.auth.signOut({ scope: "local" });
+      // Sign out locally without hiding the confirmation panel.
+      const { error: signOutError } =
+        await supabase.auth.signOut({ scope: "local" });
+
+      if (signOutError) {
+        console.warn(
+          "Deletion was queued, but local sign-out reported an issue:",
+          signOutError.message
+        );
+      }
     } catch (error) {
       showStatus(
         "We could not confirm that your deletion request was accepted. " +
@@ -401,21 +461,62 @@
         "or contact antarctica.support@gmail.com.\n\nDetails: " +
         (error.message || "Unknown error")
       );
+
       setBusy(deleteButton, false);
       deleteButton.disabled = !checkbox.checked;
     }
   });
 
   $("signout-button").addEventListener("click", async () => {
-    await supabase.auth.signOut();
-    checkbox.checked = false;
-    showStatus("You have signed out.");
-    await refreshAccountView();
+    try {
+      const { error } =
+        await supabase.auth.signOut({ scope: "local" });
+
+      if (error) throw error;
+
+      checkbox.checked = false;
+      showStatus("You have signed out.");
+      await refreshAccountView();
+    } catch (error) {
+      showStatus(
+        "Could not sign out: " +
+        (error.message || "Unknown error")
+      );
+    }
+  });
+
+  $("return-button").addEventListener("click", async () => {
+    try {
+      const { error } =
+        await supabase.auth.signOut({ scope: "local" });
+
+      if (error) throw error;
+
+      deletionRequestAccepted = false;
+      checkbox.checked = false;
+      deleteButton.disabled = true;
+
+      successPanel.classList.add("hidden");
+      accountPanel.classList.add("hidden");
+      signInPanel.classList.remove("hidden");
+
+      showStatus(
+        "You can now sign in with another account if you want to request its deletion."
+      );
+    } catch (error) {
+      showStatus(
+        "Your deletion request was accepted, but the page could not return to sign-in: " +
+        (error.message || "Unknown error")
+      );
+    }
   });
 
   supabase.auth.onAuthStateChange((event) => {
-    if (event === "SIGNED_IN" || event === "SIGNED_OUT" ||
-        event === "TOKEN_REFRESHED") {
+    if (
+      event === "SIGNED_IN" ||
+      event === "SIGNED_OUT" ||
+      event === "TOKEN_REFRESHED"
+    ) {
       refreshAccountView();
     }
   });
