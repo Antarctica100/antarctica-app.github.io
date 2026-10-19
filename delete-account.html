@@ -1,11 +1,13 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Securely request deletion of your Antarctica account.">
+  <meta name="description" content="Securely request deletion of your Antarctica account and associated data.">
+  <meta name="theme-color" content="#0b1220">
   <title>Antarctica — Account Deletion</title>
+
   <style>
     :root {
       color-scheme: dark;
@@ -16,6 +18,7 @@
       --accent: #86c7ff;
       --border: #293951;
       --danger: #ffb4ab;
+      --focus: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -52,6 +55,7 @@
     }
 
     h2 { margin-top: 0; font-size: 1.2rem; }
+
     label { display: block; margin: 12px 0 6px; }
 
     input[type="email"] {
@@ -80,7 +84,10 @@
       text-decoration: none;
     }
 
-    button:disabled { opacity: 0.55; cursor: not-allowed; }
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
 
     button.secondary {
       background: transparent;
@@ -89,6 +96,15 @@
     }
 
     button.danger { background: var(--danger); }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    a { color: var(--accent); }
 
     .muted { color: var(--muted); }
     .hidden { display: none !important; }
@@ -112,27 +128,35 @@
       color: var(--muted);
     }
 
-    footer a { color: var(--accent); margin: 0 8px; }
+    footer a { margin: 0 8px; }
+
+    @media (max-width: 480px) {
+      .panel { padding: 16px; }
+      footer a { display: inline-block; margin: 5px 8px; }
+    }
   </style>
 </head>
+
 <body>
 <header>
   <h1>Antarctica</h1>
   <p>Account and Data Deletion</p>
-  <p class="updated"><strong>Last updated: 18 October 2026</strong></p>
+  <p class="updated"><strong>Last updated: 19 October 2026</strong></p>
 </header>
 
 <main>
   <section class="panel">
     <h2>Request account deletion</h2>
     <p>
-      Sign in with the account you want to delete. After authentication,
-      you can review and explicitly confirm your deletion request.
+      Sign in with the existing Antarctica account you want to delete.
+      After authentication, review the account details and explicitly
+      confirm your deletion request.
     </p>
     <p class="muted">
       Account deletion is intended to remove your account and associated
-      data according to our deletion process and applicable legal
-      retention requirements.
+      data through our deletion process, subject to applicable legal
+      retention requirements and any limitations explained in our
+      Privacy Policy.
     </p>
   </section>
 
@@ -147,44 +171,36 @@
 
     <form id="magic-form">
       <label for="email">Account email address</label>
-      <input id="email" type="email" autocomplete="email"
-             required maxlength="254"
-             placeholder="you@example.com">
-      <button type="submit">Send sign-in magic link</button>
+      <input
+        id="email"
+        type="email"
+        autocomplete="email"
+        required
+        maxlength="254"
+        placeholder="you@example.com"
+      >
+      <button id="magic-button" type="submit">
+        Send sign-in magic link
+      </button>
     </form>
 
     <p class="muted">
-      The magic link will return you to this page. Use the email address
-      associated with your existing Antarctica account. This page does
-      not ask for your password.
+      Use the email address associated with your existing Antarctica
+      account. This page does not ask for your password. The sign-in
+      request is configured not to create a new account.
     </p>
-  </section>
-
-  <section class="panel hidden" id="success-panel" aria-live="polite">
-    <h2>Deletion request received</h2>
-    <p><strong>Your account-deletion request was accepted for processing.</strong></p>
-    <p>
-      The cleanup process may take time and may retry failed operations.
-      This confirmation means the request was queued; it does not mean all
-      account data has already been deleted.
-    </p>
-    <p class="muted">
-      Account requested for deletion:
-      <strong id="deleted-account-email"></strong>
-    </p>
-    <button id="return-button" class="secondary" type="button">
-      Return to start / use another account
-    </button>
   </section>
 
   <section class="panel hidden" id="account-panel">
     <h2>2. Confirm your account</h2>
     <p>Signed-in account:</p>
     <p><strong id="account-email"></strong></p>
+
     <p class="muted">
-      Make sure this is the account you want to delete. This action
-      is intended to be permanent and may remove your profile,
-      friendships, messages, photos and other associated data.
+      Make sure this is the account you want to delete. Deletion is
+      intended to be permanent and may remove your profile, friendships,
+      messages, photos and other associated data. Some information may
+      be retained where required or permitted by law.
     </p>
 
     <label>
@@ -201,17 +217,42 @@
     </button>
   </section>
 
+  <section class="panel hidden" id="success-panel" aria-live="polite">
+    <h2>Deletion request received</h2>
+
+    <p>
+      <strong>Your account-deletion request was accepted for processing.</strong>
+    </p>
+
+    <p>
+      The cleanup process may take time and may retry failed operations.
+      This confirmation means the request was queued; it does not mean
+      all account data has already been deleted.
+    </p>
+
+    <p class="muted">
+      Account requested for deletion:
+      <strong id="deleted-account-email"></strong>
+    </p>
+
+    <button id="return-button" class="secondary" type="button">
+      Return to start / use another account
+    </button>
+  </section>
+
   <section class="panel">
     <h2>What happens next?</h2>
     <p>
-      Your request is submitted to Antarctica's account-deletion
-      backend. The backend may process cleanup asynchronously and retry
-      failed operations. An accepted request does not mean every item
-      has already been deleted.
+      Your request is submitted to Antarctica's account-deletion backend.
+      The backend may process cleanup asynchronously and retry failed
+      operations. An accepted request does not mean every item has
+      already been deleted.
     </p>
     <p>
       Some information may be retained where required or permitted by law.
-      See the <a href="privacy-policy.html">Privacy Policy</a> for details.
+      For details about information collected, processing, retention and
+      deletion, read our
+      <a href="privacy-policy.html">Privacy Policy</a>.
     </p>
   </section>
 
@@ -237,7 +278,9 @@
   import { createClient } from
     "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-  const SUPABASE_URL = "https://xabbsntfabkunkisthcn.supabase.co";
+  const SUPABASE_URL =
+    "https://xabbsntfabkunkisthcn.supabase.co";
+
   const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_YpIaiwWRTREJ1l0uBBM3vw_KnzWI8am";
 
@@ -257,72 +300,103 @@
   );
 
   const $ = (id) => document.getElementById(id);
+
   const status = $("status");
   const signInPanel = $("signin-panel");
   const accountPanel = $("account-panel");
   const successPanel = $("success-panel");
   const googleButton = $("google-button");
   const magicForm = $("magic-form");
+  const magicButton = $("magic-button");
   const deleteButton = $("delete-button");
   const checkbox = $("confirm-checkbox");
+  const signoutButton = $("signout-button");
+  const returnButton = $("return-button");
 
   let deletionRequestAccepted = false;
+  let deletionSubmissionInProgress = false;
+  let viewRefreshInProgress = false;
 
   function showStatus(message) {
     status.textContent = message;
   }
 
-  function setBusy(button, busy, label) {
-    button.disabled = busy;
+  function safeErrorMessage(error) {
+    // Avoid displaying raw server details or internal stack traces.
+    const message =
+      typeof error?.message === "string" ? error.message.trim() : "";
 
+    if (!message) return "Please try again or contact support.";
+
+    return message.length > 240
+      ? "The operation could not be completed. Please try again or contact support."
+      : message;
+  }
+
+  function setBusy(button, busy, label) {
     if (busy) {
       button.dataset.originalText ??= button.textContent;
+      button.disabled = true;
       button.textContent = label;
-    } else if (button.dataset.originalText) {
-      button.textContent = button.dataset.originalText;
-      delete button.dataset.originalText;
+    } else {
+      if (button.dataset.originalText) {
+        button.textContent = button.dataset.originalText;
+        delete button.dataset.originalText;
+      }
     }
   }
 
   async function refreshAccountView() {
-    // Never replace the success confirmation automatically.
-    if (deletionRequestAccepted) {
+    if (viewRefreshInProgress) return;
+    viewRefreshInProgress = true;
+
+    try {
+      // Keep the confirmation visible after the backend accepts a request.
+      if (deletionRequestAccepted) {
+        signInPanel.classList.add("hidden");
+        accountPanel.classList.add("hidden");
+        successPanel.classList.remove("hidden");
+        return;
+      }
+
+      const { data, error } = await supabase.auth.getSession();
+
+      if (error) {
+        showStatus(
+          "Could not check your sign-in session. Please reload and try again."
+        );
+        return;
+      }
+
+      const session = data?.session;
+
+      if (!session) {
+        signInPanel.classList.remove("hidden");
+        accountPanel.classList.add("hidden");
+        successPanel.classList.add("hidden");
+        return;
+      }
+
       signInPanel.classList.add("hidden");
-      accountPanel.classList.add("hidden");
-      successPanel.classList.remove("hidden");
-      return;
-    }
+      accountPanel.classList.remove("hidden");
+      successPanel.classList.add("hidden");
 
-    const { data, error } = await supabase.auth.getSession();
+      $("account-email").textContent =
+        session.user.email || "Signed-in account";
 
-    if (error) {
+      deleteButton.disabled =
+        !checkbox.checked || deletionSubmissionInProgress;
+
+      showStatus(
+        "Your account is verified. Review the email above before continuing."
+      );
+    } catch {
       showStatus(
         "Could not check your sign-in session. Please reload and try again."
       );
-      return;
+    } finally {
+      viewRefreshInProgress = false;
     }
-
-    const session = data.session;
-
-    if (!session) {
-      signInPanel.classList.remove("hidden");
-      accountPanel.classList.add("hidden");
-      successPanel.classList.add("hidden");
-      return;
-    }
-
-    signInPanel.classList.add("hidden");
-    accountPanel.classList.remove("hidden");
-    successPanel.classList.add("hidden");
-
-    $("account-email").textContent =
-      session.user.email || "Signed-in account";
-
-    deleteButton.disabled = !checkbox.checked;
-
-    showStatus(
-      "Your account is verified. Review the email above before continuing."
-    );
   }
 
   googleButton.addEventListener("click", async () => {
@@ -336,10 +410,10 @@
       });
 
       if (error) throw error;
+      // OAuth normally redirects the browser to Google.
     } catch (error) {
       showStatus(
-        "Google sign-in could not start: " +
-        (error.message || "Unknown error")
+        "Google sign-in could not start: " + safeErrorMessage(error)
       );
       setBusy(googleButton, false);
     }
@@ -349,10 +423,8 @@
     event.preventDefault();
 
     const email = $("email").value.trim();
-    const submitButton =
-      magicForm.querySelector('button[type="submit"]');
 
-    setBusy(submitButton, true, "Sending magic link…");
+    setBusy(magicButton, true, "Sending magic link…");
     showStatus("");
 
     try {
@@ -368,24 +440,24 @@
 
       showStatus(
         "If this email belongs to an existing account and sign-in is permitted, " +
-        "a magic link will be sent. Open it on this device or browser to continue."
+        "a magic link will be sent. Open it in this browser to continue."
       );
     } catch (error) {
       showStatus(
-        "Could not send the sign-in link: " +
-        (error.message || "Unknown error")
+        "Could not send the sign-in link: " + safeErrorMessage(error)
       );
     } finally {
-      setBusy(submitButton, false);
+      setBusy(magicButton, false);
     }
   });
 
   checkbox.addEventListener("change", () => {
-    deleteButton.disabled = !checkbox.checked;
+    deleteButton.disabled =
+      !checkbox.checked || deletionSubmissionInProgress;
   });
 
   deleteButton.addEventListener("click", async () => {
-    if (!checkbox.checked) return;
+    if (!checkbox.checked || deletionSubmissionInProgress) return;
 
     const {
       data: sessionData,
@@ -406,11 +478,13 @@
 
     const confirmed = window.confirm(
       "Permanently request deletion of the Antarctica account " +
-      accountEmail + "?\n\nThis action cannot normally be undone."
+      accountEmail +
+      "?\n\nThis action cannot normally be undone."
     );
 
     if (!confirmed) return;
 
+    deletionSubmissionInProgress = true;
     setBusy(deleteButton, true, "Submitting request…");
     showStatus("");
 
@@ -432,7 +506,7 @@
         );
       }
 
-      // The backend accepted the request. Show a persistent confirmation.
+      // Only show success after the backend confirms the request was queued.
       deletionRequestAccepted = true;
 
       $("deleted-account-email").textContent =
@@ -444,30 +518,42 @@
       successPanel.classList.remove("hidden");
       showStatus("");
 
-      // Sign out locally without hiding the confirmation panel.
-      const { error: signOutError } =
-        await supabase.auth.signOut({ scope: "local" });
+      // Sign out locally without hiding the success confirmation.
+      try {
+        const { error: signOutError } =
+          await supabase.auth.signOut({ scope: "local" });
 
-      if (signOutError) {
+        if (signOutError) {
+          console.warn(
+            "The request was queued, but local sign-out reported an issue."
+          );
+        }
+      } catch {
         console.warn(
-          "Deletion was queued, but local sign-out reported an issue:",
-          signOutError.message
+          "The request was queued, but local sign-out could not be completed."
         );
       }
     } catch (error) {
       showStatus(
         "We could not confirm that your deletion request was accepted. " +
-        "Your account has not been confirmed deleted. Please try again " +
-        "or contact antarctica.support@gmail.com.\n\nDetails: " +
-        (error.message || "Unknown error")
+        "Your account has not been confirmed deleted. Please check the " +
+        "account status before retrying, or contact " +
+        "antarctica.support@gmail.com.\n\nDetails: " +
+        safeErrorMessage(error)
       );
+    } finally {
+      deletionSubmissionInProgress = false;
 
-      setBusy(deleteButton, false);
-      deleteButton.disabled = !checkbox.checked;
+      if (!deletionRequestAccepted) {
+        setBusy(deleteButton, false);
+        deleteButton.disabled = !checkbox.checked;
+      }
     }
   });
 
-  $("signout-button").addEventListener("click", async () => {
+  signoutButton.addEventListener("click", async () => {
+    setBusy(signoutButton, true, "Signing out…");
+
     try {
       const { error } =
         await supabase.auth.signOut({ scope: "local" });
@@ -478,14 +564,15 @@
       showStatus("You have signed out.");
       await refreshAccountView();
     } catch (error) {
-      showStatus(
-        "Could not sign out: " +
-        (error.message || "Unknown error")
-      );
+      showStatus("Could not sign out: " + safeErrorMessage(error));
+    } finally {
+      setBusy(signoutButton, false);
     }
   });
 
-  $("return-button").addEventListener("click", async () => {
+  returnButton.addEventListener("click", async () => {
+    setBusy(returnButton, true, "Returning…");
+
     try {
       const { error } =
         await supabase.auth.signOut({ scope: "local" });
@@ -505,9 +592,11 @@
       );
     } catch (error) {
       showStatus(
-        "Your deletion request was accepted, but the page could not return to sign-in: " +
-        (error.message || "Unknown error")
+        "Your deletion request was accepted, but the page could not return " +
+        "to sign-in: " + safeErrorMessage(error)
       );
+    } finally {
+      setBusy(returnButton, false);
     }
   });
 
@@ -517,7 +606,11 @@
       event === "SIGNED_OUT" ||
       event === "TOKEN_REFRESHED"
     ) {
-      refreshAccountView();
+      // Defer the session read to avoid doing additional auth work
+      // directly inside the auth-state callback.
+      queueMicrotask(() => {
+        refreshAccountView();
+      });
     }
   });
 
@@ -525,3 +618,4 @@
 </script>
 </body>
 </html>
+```
