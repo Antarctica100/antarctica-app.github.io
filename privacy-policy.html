@@ -1,588 +1,152 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privacy Policy explaining how Antarctica processes account, profile, age-related, task, device, social, chat, and other personal information.">
-  <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#f5f7fa">
-  <title>Antarctica — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Antarctica by CreativeMind.">
+  <title>Privacy Policy — Antarctica</title>
   <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #536078;
+      --line: #dce2ec;
+      --link: #175cd3;
+      --paper: #fff;
+      --bg: #f5f7fb;
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: #f5f7fa;
-      color: #20242a;
-      font: 16px/1.7 Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
     main {
-      max-width: 850px;
+      max-width: 900px;
       margin: 32px auto;
-      padding: 32px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(20,30,50,.07);
-      overflow-wrap: anywhere;
+      padding: clamp(22px, 5vw, 52px);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
     }
-    h1 { line-height: 1.25; }
-    h2 { margin-top: 32px; line-height: 1.35; }
-    h3 { margin-top: 24px; }
-    .updated { color: #555; font-weight: 600; }
-    a { color: #145bc7; }
-    @media (max-width: 600px) {
-      main { margin: 0; padding: 22px; border-radius: 0; }
+    h1, h2 { line-height: 1.25; }
+    h1 { font-size: clamp(2rem, 5vw, 2.7rem); margin-bottom: .25rem; }
+    h2 { margin-top: 2rem; font-size: 1.35rem; }
+    .muted { color: var(--muted); }
+    a { color: var(--link); overflow-wrap: anywhere; }
+    li { margin: .35rem 0; }
+    .notice {
+      padding: 14px 16px;
+      background: #f1f5ff;
+      border-left: 4px solid #175cd3;
+      border-radius: 8px;
+    }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
     }
   </style>
 </head>
 <body>
 <main>
-  <h1>Antarctica — Privacy Policy</h1>
-  <p class="updated">Last updated: 19 October 2026</p>
+  <h1>Privacy Policy</h1>
+  <p><strong>Antarctica</strong> · Published by <strong>CreativeMind</strong></p>
+  <p class="muted">Effective date: 27 October 2026 · Last updated: 27 October 2026</p>
 
-  <p>
-    This Privacy Policy explains how Antarctica ("Antarctica", "the App",
-    "we", "us", or "our") may collect, use, store, disclose, and delete
-    information when you use the App, its website, and related services.
-    It covers features available in the current version and describes
-    certain optional or future integrations where indicated.
-  </p>
+  <p>This Privacy Policy explains how CreativeMind (“we”, “us”, or “our”) handles information when you use the Antarctica mobile application (“Antarctica” or the “App”). Please read it before using the App. This policy should be read together with any clear, in-app permission prompts and notices shown when you use a feature.</p>
 
-  <h2>1. Who We Are and How to Contact Us</h2>
-  <p>
-    Antarctica is operated by an individual developer. The App is designed
-    to help users organize tasks and routines, improve focus, manage
-    app usage, track progress, set alarms and reminders, and use available
-    friendship, group, and messaging features.
-  </p>
-  <p>
-    For privacy questions, data requests, or concerns, contact:
-    <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>.
-  </p>
-  <p>
-    The App's current operator is an individual developer, not a company
-    identified by this Policy as a separate legal entity.
-  </p>
+  <h2>1. Who is responsible and how to contact us</h2>
+  <p>Antarctica is published by CreativeMind. For privacy questions, requests, or complaints, contact <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>.</p>
 
-  <h2>2. Information We Process</h2>
-  <p>
-    The information processed depends on your account, device, permissions,
-    settings, and the features you use. Some information is sent to our
-    backend; other information may remain on your device. Not every
-    category described below is necessarily collected in every release.
-  </p>
-
-  <h3>2.1 Account, Authentication, and Profile Information</h3>
-  <p>
-    We may process your email address, authentication-provider identifiers,
-    internal user identifier, public user identifier, profile name,
-    avatar, profile settings, account status, and information needed to
-    authenticate you and maintain account security.
-  </p>
-  <p>
-    You may be able to sign in using email-based authentication or Google
-    sign-in through the configured authentication provider. When Google
-    sign-in is used, Google processes information under its own applicable
-    privacy terms. Antarctica does not ask you to provide your Google
-    password directly to the App.
-  </p>
-  <p>
-    Profile details and public identifiers may be visible to other users
-    where required for friendship, group, leaderboard, or other social
-    features. The information displayed depends on the feature and its
-    access controls.
-  </p>
-
-  <h3>2.2 Age, Date of Birth, and Adult Approval</h3>
-  <p>
-    The App uses age-related information to determine eligibility, apply
-    age-based restrictions, and decide whether adult approval is required
-    before certain social features can be enabled. The signup flow may ask
-    for a date of birth or other age information for this purpose.
-  </p>
-  <p>
-    The intended backend design stores the processed age category or
-    minor/adult status needed to apply these restrictions rather than
-    retaining the raw date of birth in the social-controls record.
-    Information entered during signup may also be temporarily processed
-    by the device or authentication flow. This statement does not mean
-    that no raw date-of-birth value can exist in any device cache, log,
-    or other system; actual retention depends on the relevant
-    implementation.
-  </p>
-  <p>
-    Where adult approval is required, we may process a parent's or
-    guardian's email address, approval-request status, approval timestamps,
-    verification-code data in protected form, expiration information,
-    and related records needed to administer the approval process.
-    Verification codes are intended for limited use and may expire or
-    become invalid after repeated unsuccessful attempts.
-  </p>
-  <p>
-    Please do not submit another person's personal information unless you
-    are authorized to provide it for the relevant purpose.
-  </p>
-
-  <h3>2.3 Tasks, Timetables, Goals, and Progress</h3>
-  <p>
-    Depending on your use, we may process task names and descriptions,
-    scheduled start and end times, recurring schedules, reminders, task
-    classifications, focus settings, streaks, levels, progress,
-    completion records, and other information you enter or generate
-    through the App.
-  </p>
-  <p>
-    This information is used to provide task planning, routines,
-    timetable management, reminders, progress tracking, and related
-    features. Some settings and records may be stored locally; others
-    may be synchronized with backend services where the feature supports
-    synchronization.
-  </p>
-
-  <h3>2.4 Device Permissions and App-Usage Controls</h3>
-  <p>
-    Features such as alarms, notifications, app blocking, and reminders
-    may require Android permissions or access to particular device
-    capabilities. Depending on your settings and the Android version,
-    the App may use device app information, package identifiers,
-    permission status, app-usage information made available to it,
-    alarm scheduling, and local preferences to apply the limits and
-    rules you configure.
-  </p>
-  <p>
-    App-usage or installed-app information may be processed on your
-    device to support blocking and time-limit features. This Policy does
-    not mean that a complete history of every app you use is necessarily
-    uploaded to Antarctica's servers.
-  </p>
-  <p>
-    Android permissions and device restrictions may affect whether
-    alarms, notifications, or app blocking work as expected. You can
-    manage available permissions in your device settings. Revoking a
-    permission may disable or limit the related feature.
-  </p>
-
-  <h3>2.5 Camera, Photos, Files, and Image Processing</h3>
-  <p>
-    Where you use a photo-related task, profile image, chat attachment,
-    or other media feature, the App may access images or files you choose
-    or capture, subject to the permissions and selection mechanisms
-    available on your device.
-  </p>
-  <p>
-    If image labeling or similar on-device or provider-assisted
-    processing is enabled, image data may be analyzed to support the
-    requested feature. The precise processing location depends on the
-    enabled implementation. We do not represent that all image analysis
-    is exclusively on-device unless the relevant release is configured
-    and verified to work that way.
-  </p>
-  <p>
-    Photos or files submitted for a task or social feature may be stored
-    locally or uploaded to a backend service when required for that
-    feature. Do not submit sensitive images or files unless you understand
-    how the relevant feature uses them.
-  </p>
-
-  <h3>2.6 Friends, Groups, and Social Controls</h3>
-  <p>
-    If you use social features, we may process friend requests, friendship
-    status, group names and descriptions, group membership, invitations,
-    group warnings, blocked-user relationships, social preferences,
-    consent records, adult-approval status, and related timestamps or
-    identifiers.
-  </p>
-  <p>
-    This information supports social functionality, eligibility checks,
-    group management, blocking, and safety controls. Some profile and
-    relationship information must be shared with the relevant users for
-    social features to work.
-  </p>
-
-  <h3>2.7 Chat Messages, Attachments, and Delivery Information</h3>
-  <p>
-    Individual and group messaging may process message text, links,
-    photos, videos, other supported files, sender and recipient
-    identifiers, timestamps, message type, delivery or acknowledgement
-    status, and information needed to manage message visibility and
-    cleanup.
-  </p>
-  <p>
-    Chat attachments may be held in private cloud storage, with access
-    intended to be restricted by backend authorization and social-access
-    rules. Authorized recipients may be able to view or download
-    attachments while access is available.
-  </p>
-  <p>
-    Certain chat features are designed to remove server-side message
-    records or media after the required delivery or acknowledgement
-    conditions are met. Cleanup may be asynchronous and may be retried
-    after a failure. This does not guarantee immediate deletion in every
-    case, and retention can vary by message status, attachment type,
-    technical failure, backup, or legal requirement.
-  </p>
-  <p>
-    Messages or attachments saved, copied, screenshotted, or downloaded
-    by recipients may remain outside Antarctica's control. Deleting a
-    server-side copy cannot guarantee deletion of copies already held
-    by another user.
-  </p>
-
-  <h3>2.8 Notifications and Background Processing</h3>
-  <p>
-    If push notifications are enabled, the App or its service providers
-    may process device notification tokens, account identifiers,
-    notification preferences, and delivery status to send relevant
-    notifications. Local alarms and reminders may be scheduled on your
-    device independently of push notifications.
-  </p>
-  <p>
-    Background jobs may process pending notifications, age-related
-    transitions, chat cleanup, account-deletion jobs, or other
-    maintenance tasks needed for the relevant features. Such jobs may
-    retain operational status and timestamps so that failed work can
-    be retried or investigated.
-  </p>
-
-  <h3>2.9 Reports, Blocking, and Safety Records</h3>
-  <p>
-    When you block or report another user, we may process the relevant
-    user identifiers, report category, details you submit, timestamps,
-    moderation outcomes, block history, and other records needed to
-    review abuse, enforce rules, and protect users.
-  </p>
-  <p>
-    Safety records may be retained separately from ordinary profile or
-    chat content where reasonably necessary to prevent abuse, enforce
-    restrictions, resolve disputes, or meet legal obligations.
-  </p>
-
-  <h3>2.10 Speech, Text-to-Speech, and Language Features</h3>
-  <p>
-    If voice input, speech recognition, text-to-speech, translation, or
-    related accessibility features are enabled and used, the App may
-    process the text or audio necessary to provide the requested
-    function. Depending on the specific implementation, processing may
-    occur on-device or through an operating-system or third-party
-    service. The App's use of a speech-related library alone does not
-    establish that audio is uploaded to Antarctica's backend.
-  </p>
-
-  <h3>2.11 Analytics, Crash Reports, and Diagnostics</h3>
-  <p>
-    If analytics or diagnostic services are included and enabled in a
-    release, those services may process app events, app version,
-    device or app-instance identifiers, device information, crash
-    traces, performance information, and technical logs. These data
-    may help us understand feature usage, reliability, and technical
-    problems.
-  </p>
-  <p>
-    Firebase Cloud Messaging is part of the App's intended notification
-    integrations. Firebase Analytics, Crashlytics, or other analytics
-    and diagnostic services may be used only if configured and enabled
-    in the relevant release. Their presence in development dependencies
-    does not by itself mean they are actively collecting information.
-  </p>
-
-  <h2>3. How We Use Information</h2>
-  <p>Depending on the feature, we use information to:</p>
+  <h2>2. Information we handle</h2>
+  <p>The information handled depends on the features you use, the permissions you grant, and whether you create an account.</p>
   <ul>
-    <li>Create, authenticate, secure, and maintain accounts.</li>
-    <li>Display and maintain profiles and user identifiers.</li>
-    <li>Provide tasks, timetables, routines, alarms, reminders, and progress features.</li>
-    <li>Apply device-based usage limits, focus settings, and app-blocking rules.</li>
-    <li>Support photo tasks, media attachments, and relevant image-processing features.</li>
-    <li>Enable friendships, groups, invitations, messages, and attachment delivery.</li>
-    <li>Apply age restrictions and manage required adult approval.</li>
-    <li>Send notifications and process necessary background work.</li>
-    <li>Investigate reports, enforce blocking and safety controls, and prevent abuse.</li>
-    <li>Diagnose failures, maintain reliability, and improve features where appropriate.</li>
-    <li>Process data-access, correction, and account-deletion requests.</li>
-    <li>Comply with applicable laws and protect the rights and security of users and the service.</li>
+    <li><strong>Account and authentication information:</strong> email address, authentication identifiers, sign-in provider information, and account/profile details such as display name or avatar that you provide or choose to use. If you use Google sign-in, Google processes sign-in information under its own privacy terms and provides authentication information to the App/service.</li>
+    <li><strong>Age and parent/guardian consent:</strong> during signup, the App uses the age information you enter to determine whether the adult or minor flow applies. The App is designed not to send or store your full date of birth in the Antarctica database. The service may store an age category, consent-request status, parent/guardian email address, timestamps, an approval-token hash, an approval-code hash and expiry/attempt information needed to process consent securely. The raw approval code is not intended to be stored in the database.</li>
+    <li><strong>Productivity information:</strong> tasks, schedules, timetable entries, alarm/reminder settings, focus or mode settings, app-blocking choices, and related progress or completion information you create in the App.</li>
+    <li><strong>Friends, groups and communications:</strong> friendship or group membership information, messages, links, photos, videos, files, delivery/receipt status, message-expiry information, blocks, invitations, reports and related safety records, where you use these features.</li>
+    <li><strong>Device and app information needed for features:</strong> device notification token(s), app/permission state, and information needed to identify apps you choose to manage with the app-blocking feature. Android may require permission to view installed apps or usage-related information for this feature. The App uses this information to provide the feature you request; it is not intended to be used to sell a profile of your app usage.</li>
+    <li><strong>Permissions and locally processed information:</strong> depending on the feature, you may grant notification, alarm/scheduling, camera, photo/media/file access, microphone, speech recognition, or other Android permissions. These are used to provide the relevant feature, such as alarms, reminders, photo tasks, voice input, or sending media. Some settings and operational data may be stored locally on your device.</li>
+    <li><strong>Support and safety information:</strong> bug reports, messages you send to support, user reports, and information needed to investigate misuse or protect the service.</li>
+    <li><strong>Technical and operational information:</strong> information generated by the backend or service providers to authenticate requests, deliver notifications, prevent abuse, troubleshoot failures, and maintain security. Service-provider logs and diagnostics may also be generated.</li>
   </ul>
+  <p>Do not send information you do not want other users to see through social features. Do not include passwords, payment-card details, government identifiers, or other highly sensitive information in chat or bug reports.</p>
 
-  <h2>4. Legal Bases and Permission Choices</h2>
-  <p>
-    Where applicable law requires a legal basis for processing, the
-    relevant basis may include providing a feature you request,
-    maintaining account security, pursuing legitimate interests such
-    as preventing abuse and maintaining the service, obtaining consent
-    where required, or complying with legal obligations.
-  </p>
-  <p>
-    Some processing depends on Android permissions or choices you make
-    in the App. You can decline optional permissions or disable certain
-    features, although features that depend on those permissions may
-    not work. Withdrawing a device permission does not automatically
-    delete information already stored on a server.
-  </p>
-  <p>
-    The legal basis applicable to a particular activity depends on the
-    user's location, the feature, and the circumstances of processing.
-    Nothing in this section removes rights provided by applicable law.
-  </p>
-
-  <h2>5. Service Providers and Technology</h2>
-  <p>
-    The App uses Supabase for backend functionality, including
-    authentication, database operations, server-side functions, and
-    private chat-photo storage. The App's configured authentication
-    flow may use Google sign-in.
-  </p>
-  <p>
-    Depending on the release and enabled configuration, other providers
-    or technologies may include:
-  </p>
+  <h2>3. How we use information</h2>
   <ul>
-    <li><strong>Brevo:</strong> email delivery for features such as parent or guardian approval.</li>
-    <li><strong>Firebase Cloud Messaging:</strong> push-notification delivery where enabled.</li>
-    <li><strong>Firebase Analytics or Crashlytics:</strong> analytics and diagnostic processing only if enabled.</li>
-    <li><strong>Android and device services:</strong> local alarms, notifications, app-usage controls, camera access, file selection, and speech-related features.</li>
+    <li>create and secure accounts, authenticate users, and maintain profiles;</li>
+    <li>provide tasks, schedules, alarms, reminders, focus modes, app-blocking and progress features;</li>
+    <li>operate friend, group, messaging, media-sharing, notification and safety features;</li>
+    <li>request, record and verify parent/guardian consent for minor accounts;</li>
+    <li>respond to support requests and bug reports, diagnose errors and improve reliability;</li>
+    <li>detect spam, abuse, fraud, policy violations or attempts to evade a valid enforcement action;</li>
+    <li>process account deletion and meet applicable legal obligations; and</li>
+    <li>protect the rights, safety and security of users and the service.</li>
   </ul>
-  <p>
-    Other providers may be added if needed to operate a feature. Providers
-    process information under their own terms and privacy practices and,
-    where applicable, our service arrangements with them. The exact
-    information each provider receives depends on the integration
-    actually enabled.
-  </p>
-  <p>
-    We do not claim that every provider listed above is active in every
-    release. We intend to update this Policy if material data practices
-    change.
-  </p>
+  <p>We do not sell personal information. We do not use a child’s date of birth as a stored profile field in the Antarctica database under the intended signup design described above.</p>
 
-  <h2>6. How Information May Be Shared</h2>
-  <p>
-    We do not sell personal information as a business practice. We may
-    share or make information available in the following circumstances:
-  </p>
+  <h2>4. When information is shared</h2>
+  <p>We share information only as needed to operate the App, carry out a user-requested action, protect the service, or comply with law. Depending on the feature, recipients may include:</p>
   <ul>
-    <li>
-      <strong>With other users:</strong> profile details, public identifiers,
-      friendship and group information, messages, and media to the extent
-      required by the social feature and its access rules.
-    </li>
-    <li>
-      <strong>With service providers:</strong> information needed for
-      authentication, hosting, database operations, email delivery,
-      notifications, storage, diagnostics, or other enabled functions.
-    </li>
-    <li>
-      <strong>For safety and legal reasons:</strong> where reasonably
-      necessary to investigate abuse, protect users, enforce rules,
-      respond to lawful requests, or comply with applicable law.
-    </li>
-    <li>
-      <strong>For a business or asset transfer:</strong> if the App or
-      related assets are transferred, subject to applicable legal
-      requirements and appropriate handling of personal information.
-    </li>
-    <li>
-      <strong>At your direction:</strong> when you choose to share content
-      or use a feature that makes information available to other users.
-    </li>
+    <li><strong>Supabase:</strong> backend database, authentication, storage and server functions used to operate accounts and app features.</li>
+    <li><strong>Google:</strong> Google sign-in and related authentication services if you choose that sign-in method.</li>
+    <li><strong>Firebase Cloud Messaging (Google):</strong> delivery of push notifications to devices.</li>
+    <li><strong>Brevo:</strong> delivery of parent/guardian consent-request emails and approval-code emails.</li>
+    <li><strong>Other users:</strong> friends or group members may see content and profile details you send or make available through social features. Only send content you are comfortable sharing with the intended recipients.</li>
+    <li><strong>Authorities or other parties:</strong> where required by law, legal process, or necessary to protect users, rights, safety, or the service.</li>
   </ul>
-  <p>
-    We do not authorize service providers to use information received
-    from us for purposes unrelated to their services where restricted
-    by our applicable arrangements or law.
-  </p>
-  <p>
-    Information made available to other users may be copied, screenshotted,
-    forwarded, or saved by them. We cannot guarantee that copies outside
-    our systems will be removed when you delete content or an account.
-  </p>
+  <p>Service providers process information under their own terms and privacy notices as well as any applicable arrangements with us. Their systems may process information in countries other than your own.</p>
 
-  <h2>7. Data Retention</h2>
-  <p>
-    We intend to retain information only for as long as reasonably
-    necessary for the purposes described in this Policy, taking account
-    of the feature, security needs, applicable law, and legitimate
-    dispute-resolution requirements.
-  </p>
+  <h2>5. Chat messages and shared media</h2>
+  <p>Antarctica’s chat features are designed to support temporary messages and media, including cleanup after receipt or after the applicable expiry period. Actual deletion timing may depend on message type, delivery state, backend cleanup, storage processing and temporary technical failures. A recipient may see, copy, screenshot, download, or otherwise save content before it expires or is deleted. We cannot remove copies independently saved by another person or content that has already been exported outside the App.</p>
+  <p>We may retain limited delivery, expiry, report, moderation or security information for as long as needed to operate the feature, resolve failures, investigate abuse or enforce safety rules.</p>
+
+  <h2>6. Children and parent/guardian consent</h2>
+  <p>Antarctica is not intended for children under 13, and the signup process is designed to reject users under 13. Users aged 13–17 must complete the parent/guardian consent process before their account is created or enabled through the minor signup flow. Adults use the normal signup flow.</p>
+  <p>The consent process may use the child’s email address, parent/guardian email address, request status, secure token/code hashes, expiry times, approval/denial timestamps and limited attempt-control information. The parent/guardian receives an email to approve or deny the request; when approved, a one-time code is sent to the parent/guardian email address for the child to enter. The App should not be used to bypass age restrictions or parental consent.</p>
+  <p>A parent/guardian can contact us at <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a> with questions or requests relating to a minor’s information or account. We may need to verify the requester’s authority before acting.</p>
+
+  <h2>7. Permissions and your choices</h2>
+  <p>Android permission prompts explain access requested by the App. You can manage permissions through Android settings. If you deny or revoke a permission, the related feature may not work as intended. For example, alarms and reminders may require notification or exact-alarm-related access depending on your Android version and device settings; app blocking may require the relevant access to identify or manage selected apps; media, camera, microphone and speech features require their corresponding permissions.</p>
+  <p>Notifications can be disabled in Android settings. You can also stop using social features, avoid sharing content, and contact us about account deletion or privacy questions.</p>
+
+  <h2>8. Security</h2>
+  <p>We use technical and organisational measures intended to protect information, including authenticated access, server-side access controls, and secure transport where supported. No online service, device, network, or storage system can be guaranteed to be completely secure. Keep your device secure and do not share account credentials or one-time approval codes.</p>
+
+  <h2>9. Data retention and deletion</h2>
+  <p>We keep information only for as long as reasonably necessary for the purposes described in this policy, including providing the service, handling consent, resolving support issues, enforcing safety rules, meeting legal obligations, and maintaining security. Retention depends on the type of information and the reason it is needed.</p>
   <ul>
-    <li>
-      <strong>Account and profile data:</strong> generally retained while
-      needed to operate the account, subject to account deletion and
-      applicable retention requirements.
-    </li>
-    <li>
-      <strong>Tasks, settings, and progress:</strong> retained as needed
-      to provide the features, synchronize supported data, and maintain
-      the user's requested experience.
-    </li>
-    <li>
-      <strong>Chat messages and media:</strong> certain server-side data
-      is intended to be cleaned up after delivery or acknowledgement
-      conditions are met. Actual cleanup may be delayed by retries or
-      technical failures.
-    </li>
-    <li>
-      <strong>Adult-approval records:</strong> request, status, and
-      verification information may be retained as needed to administer
-      approval, enforce eligibility, and protect the process. Verification
-      codes and tokens are intended to expire and be cleared when no
-      longer needed.
-    </li>
-    <li>
-      <strong>Reports and safety records:</strong> may be retained for
-      an appropriate period to address abuse, repeated violations,
-      security, or legal obligations.
-    </li>
-    <li>
-      <strong>Deletion and technical records:</strong> job status,
-      retry information, security logs, and limited operational records
-      may remain temporarily to complete or verify deletion and maintain
-      service security.
-    </li>
+    <li><strong>Active account data:</strong> account/profile details, tasks, schedules, settings, progress and social-feature data are retained while needed to provide the account and features, unless you delete them earlier where the App supports it.</li>
+    <li><strong>Parent/guardian consent records:</strong> consent requests, status, timestamps, email addresses, token/code hashes, expiry data and attempt-limit records are retained while needed to complete or evidence the consent process, protect it from abuse, and resolve disputes or legal obligations. Unneeded or expired requests are subject to cleanup.</li>
+    <li><strong>Chat messages and media:</strong> temporary messages and media are subject to the feature’s receipt/expiry cleanup process. Deletion may not be instantaneous and can be delayed by delivery state, retries, outages or technical processing. Copies saved by recipients are outside our control.</li>
+    <li><strong>Account deletion requests:</strong> deletion is processed through a backend job. The job record may remain temporarily while deletion is pending, being retried or being verified. The system may retry failed cleanup steps. This operational record is used to complete deletion and is not intended to preserve the deleted account for continued use.</li>
+    <li><strong>Security, abuse and ban-prevention records:</strong> we may retain a limited record, such as a protected email fingerprint, enforcement reason, status, creation/update time, expiry or review information, where reasonably necessary to enforce a permanent or time-limited safety ban, prevent repeated abuse or evasion, or comply with law. Such records are kept separately from the deleted user account and limited to that purpose.</li>
+    <li><strong>Technical logs, backups and provider records:</strong> limited copies may persist for a period in provider logs, backup systems or security records until the relevant retention or overwrite process completes. They are not intended to be used to restore a deleted account for ordinary use.</li>
+    <li><strong>Support and bug reports:</strong> retained for as long as needed to respond, investigate, prevent repeated abuse and maintain a record of the issue, then deleted or de-identified when no longer needed, subject to legal or security needs.</li>
   </ul>
-  <p>
-    Backup systems, provider records, and technical logs may retain
-    information for a limited period after it is deleted from active
-    systems. Retention periods depend on the relevant configuration
-    and provider. We do not promise immediate removal from every backup
-    or every recipient's device.
-  </p>
+  <p>We do not promise that every copy is erased at the exact moment you submit a deletion request. We aim to process requests promptly; some backend cleanup is asynchronous and may require retries. If a deletion appears stuck, contact <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>.</p>
+  <p><strong>How to request deletion:</strong> use the account-deletion option inside Antarctica or the external account-deletion webpage linked from our official GitHub Pages site and Google Play listing. Follow the instructions on that page. We will use the information necessary to locate and verify the account and process the request. Deleting the account does not necessarily delete copies another user has saved, limited security/ban-prevention records, records we must keep by law, or copies awaiting routine backup/log expiry.</p>
 
-  <h2>8. Account Deletion and Clearing App Data</h2>
-  <h3>8.1 Account Deletion</h3>
-  <p>
-    Where available, the App provides a way to request account deletion.
-    The request may be accepted first and completed asynchronously.
-    Backend processing may need to remove account records, related
-    database information, stored media, and the authentication account.
-    Failed cleanup may be retried.
-  </p>
-  <p>
-    Acceptance of a deletion request does not necessarily mean every
-    item has already been deleted. We intend to complete deletion of
-    associated personal information, subject to applicable law and
-    legitimate retention requirements. Information that must be retained
-    may be restricted from ordinary use for the period required.
-  </p>
-  <p>
-    To request account deletion, use the in-App account-deletion option
-    where available or visit:
-    <a href="https://antarctica100.github.io/antarctica-app.github.io/delete-account.html">Antarctica Account Deletion</a>.
-  </p>
+  <h2>10. International processing</h2>
+  <p>Our service providers may process or store information in locations outside your state or country. Where required, we take steps intended to ensure appropriate safeguards for such processing.</p>
 
-  <h3>8.2 Clearing App Data</h3>
-  <p>
-    The App may also provide a separate option to clear or reset app
-    data. This is not the same as deleting your account. Depending on
-    the feature, clearing app data may remove profile-related app data,
-    friends, groups, progress, tasks, timetables, or other app records
-    while leaving the authenticated account and certain social-consent
-    or approval records intact. The exact effect is described in the
-    relevant confirmation screen.
-  </p>
+  <h2>11. Your privacy requests and complaints</h2>
+  <p>You can contact us to ask about information associated with your account, request correction or deletion where available, raise a concern about a minor’s account, or submit a privacy complaint. Email <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>. Please do not send passwords or approval codes. We may ask for reasonable information to verify identity or parental authority before responding. Rights and procedures may also be available under applicable law.</p>
 
-  <h3>8.3 Signing Out</h3>
-  <p>
-    Signing out does not, by itself, delete your account or submit an
-    account-deletion request.
-  </p>
+  <h2>12. Changes to this policy</h2>
+  <p>We may update this policy when the App, service providers, law or data practices change. The revised policy will be published at this URL with an updated “Last updated” date. If a change materially affects how information is handled, we will provide additional notice where required.</p>
 
-  <h2>9. Security</h2>
-  <p>
-    We use technical measures intended to protect information, including
-    authentication, access controls, backend authorization rules,
-    restrictions on sensitive database operations, and private storage
-    controls where configured. We seek to limit access to information
-    according to the needs of each feature.
-  </p>
-  <p>
-    No application, device, transmission, or storage system can be
-    guaranteed completely secure. You should protect your device,
-    secure access to your email and sign-in accounts, and contact us
-    if you suspect unauthorized access or a privacy or security issue.
-  </p>
+  <h2>13. Contact</h2>
+  <p><strong>CreativeMind — Antarctica</strong><br>
+  Email: <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a></p>
 
-  <h2>10. Children, Age Restrictions, and Adult Approval</h2>
-  <p>
-    Antarctica applies age-related eligibility restrictions and may
-    disable certain social features until required adult approval is
-    completed. The App is intended to enforce these restrictions through
-    its age and social-control mechanisms.
-  </p>
-  <p>
-    Users should provide accurate age-related information and must not
-    misrepresent their age to bypass restrictions. Where adult approval
-    is required, the App may process the parent's or guardian's email
-    address and approval status to request and record that approval.
-  </p>
-  <p>
-    We intend to handle children's information in accordance with
-    applicable legal requirements. The precise rules may differ by
-    country or region. Parents or guardians who have questions about
-    information associated with a child may contact us using the address
-    below.
-  </p>
-
-  <h2>11. Your Privacy Rights and Requests</h2>
-  <p>
-    Depending on applicable law and your circumstances, you may have
-    rights to request access to, correction of, deletion of, or
-    information about the processing of your personal information.
-    You may also have rights to withdraw consent or raise a complaint
-    with a competent authority where the law provides these rights.
-  </p>
-  <p>
-    Contact
-    <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>
-    to make a privacy request. We may need to verify your identity or
-    authority before responding, particularly when a request concerns
-    a child's information. We will handle requests within the periods
-    and subject to the exceptions provided by applicable law.
-  </p>
-  <p>
-    If you are a parent or guardian making a request on behalf of a
-    child, please explain your relationship and the nature of your
-    request. Do not email passwords, authentication tokens, or other
-    unnecessary sensitive information.
-  </p>
-
-  <h2>12. International Processing</h2>
-  <p>
-    Our service providers may process or store information in countries
-    other than the country where you live. The locations depend on
-    provider infrastructure and configuration. Where required, transfers
-    and processing will be subject to applicable legal safeguards.
-  </p>
-
-  <h2>13. Third-Party Services and Links</h2>
-  <p>
-    The App or its website may link to third-party services, including
-    sign-in providers or service-provider privacy notices. Those services
-    operate under their own terms and policies. We are not responsible
-    for the privacy practices of independent third parties, and you
-    should review their policies before using their services.
-  </p>
-
-  <h2>14. Changes to This Policy</h2>
-  <p>
-    We may revise this Policy when the App's features, integrations,
-    data practices, or legal requirements change. The date at the top
-    indicates the date of the latest revision. Where required, we will
-    provide additional notice or seek consent for material changes.
-  </p>
-
-  <h2>15. Contact</h2>
-  <p>
-    For privacy questions, concerns, or requests, contact:
-    <a href="mailto:antarctica.support@gmail.com">antarctica.support@gmail.com</a>.
-  </p>
-  <p><strong>Operator:</strong> Individual developer of Antarctica.</p>
-
-  <hr>
-  <p>
-    This Policy describes intended and possible data practices based on
-    the App's features and integrations. Optional integrations may not
-    be active in every release. The Policy does not guarantee that every
-    technical operation always succeeds or that deletion is instantaneous.
-  </p>
+  <footer>
+    <p>This policy describes the intended handling of information in Antarctica. Before publishing, ensure it matches the production app, enabled SDKs, Google Play Data safety declarations, backend configuration and actual deletion behaviour.</p>
+  </footer>
 </main>
 </body>
 </html>
-```
